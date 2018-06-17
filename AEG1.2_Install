@@ -295,6 +295,7 @@ function update_node() {
 	sudo rm -rf ./update1.2
 	echo "[*] Updated Masternode to 1.2"
 	systemctl status Aegeus.service 
+	echo "${BLUE}[+] Donations: ANm7NHzwry9dEHT8pcRE3HKrU5vbZXiAaz${NC}"
 }
 
 
