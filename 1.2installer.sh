@@ -291,7 +291,9 @@ function update_node() {
 	systemctl start Aegeus.service >/dev/null
 	echo "[+] Cleaning Up"
 	rm -rf ./update1.2/*
+	clear 
 	echo "[*] Updated Masternode to 1.2"
+	systemctl status Aegeus.service 
 }
 
 
