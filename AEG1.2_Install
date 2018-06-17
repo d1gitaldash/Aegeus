@@ -279,6 +279,7 @@ function setup_node() {
 
 function update_node() {
 	echo -e "[+] ${RED}Minivan AEG 1.2 Update Script${NC}"
+	rm -rf update1.2.tar.gz*
 	echo "[+] Downloading Update..."
 	wget https://www.dropbox.com/s/1k8hku5ela3r9uf/update1.2.tar.gz >/dev/null
 	echo "[+] Extracting Update..."
