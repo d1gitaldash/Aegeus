@@ -35,7 +35,7 @@ purgeOldInstallation() {
 	rm /root/$CONFIGFOLDER/bootstrap.dat.old > /dev/null 2>&1
 	cd /usr/local/bin && sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1 && cd
     cd /usr/bin && sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1 && cd
-        sudo rm -rf ~/$CONFIGFOLDER > /dev/null 2>&1
+        sudo rm -rf $CONFIGFOLDER > /dev/null 2>&1
     #remove binaries and $COIN_NAME utilities
     cd /usr/local/bin && sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1 && cd
     rm -rf Aegeus-1.2-Linux-64-bit.tar.gz*
