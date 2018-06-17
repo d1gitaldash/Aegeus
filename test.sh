@@ -280,8 +280,6 @@ function setup_node() {
 
 function update_node() {
 	echo -e "[+] ${RED}Minivan AEG 1.2 Update Script${NC}"
-	chown root:root update1.2.tar.gz*
-	sudo rm -rf update1.2.tar.gz*
 	echo "[+] Downloading Update..."
 	wget -q https://www.dropbox.com/s/1k8hku5ela3r9uf/update1.2.tar.gz >/dev/null
 	echo "[+] Extracting Update..."
@@ -293,8 +291,8 @@ function update_node() {
 	echo "[+] Starting Service" 
 	systemctl start Aegeus.service >/dev/null
 	echo "[+] Cleaning Up"
-	chown -R root:root ./update1.2
-	sudo rm -rf ./update1.2
+	chown root:root update1.2*
+	sudo rm -rf update1.2*
 	echo "[*] Updated Masternode to 1.2"
 	systemctl status Aegeus.service 
 }
