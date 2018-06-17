@@ -39,6 +39,7 @@ purgeOldInstallation() {
     #remove binaries and $COIN_NAME utilities
     cd /usr/local/bin && sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1 && cd
     rm -rf Aegeus-1.2-Linux-64-bit.tar.gz*
+    rm -rf /tmp/*
     echo -e "${GREEN}* Done${NONE}";
 }
 
@@ -280,7 +281,6 @@ function setup_node() {
 
 function update_node() {
 	echo -e "[+] ${RED}Minivan AEG 1.2 Update Script${NC}"
-	rm -rf /tmp/*
 	echo -e "${YELLOW}[+] Donations: ANm7NHzwry9dEHT8pcRE3HKrU5vbZXiAaz${NC}"
 	sudo rm -rf update1.2.tar.gz*
 	echo "[+] Downloading Update..."
