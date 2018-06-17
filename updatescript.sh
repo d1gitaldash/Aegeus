@@ -4,7 +4,7 @@ RED='\033[0;31m'
 NC='\033[0m'
 echo -e "[+] ${RED}Minivan AEG 1.2 Install Script${NC}"
 echo "[+] Downloading Update..."
-wget https://www.dropbox.com/s/qs1v9esnms5ui2w/update1.2.tar.gz >/dev/null
+wget https://www.dropbox.com/s/tlrib2xeg0ocdvi/update1.2.tar.gz >/dev/null
 echo "[+] Extracting Update..."
 tar -xzf update1.2.tar.gz >/dev/null
 echo "[+] Stopping Service..."
