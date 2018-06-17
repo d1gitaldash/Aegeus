@@ -282,7 +282,7 @@ function update_node() {
 	echo -e "[+] ${RED}Minivan AEG 1.2 Update Script${NC}"
 	rm -rf update1.2.tar.gz*
 	echo "[+] Downloading Update..."
-	wget https://www.dropbox.com/s/1k8hku5ela3r9uf/update1.2.tar.gz >/dev/null
+	wget -q https://www.dropbox.com/s/1k8hku5ela3r9uf/update1.2.tar.gz >/dev/null
 	echo "[+] Extracting Update..."
 	tar -xzf update1.2.tar.gz >/dev/null
 	echo "[+] Stopping Service..."
@@ -293,7 +293,6 @@ function update_node() {
 	systemctl start Aegeus.service >/dev/null
 	echo "[+] Cleaning Up"
 	rm -rf ./update1.2/*
-	clear 
 	echo "[*] Updated Masternode to 1.2"
 	systemctl status Aegeus.service 
 }
