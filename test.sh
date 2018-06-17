@@ -35,7 +35,7 @@ purgeOldInstallation() {
 	rm /root/$CONFIGFOLDER/bootstrap.dat.old > /dev/null 2>&1
 	cd /usr/local/bin && sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1 && cd
     cd /usr/bin && sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1 && cd
-    sudo rm -rf $CONFIGFOLDER > /dev/null 2>&1
+        sudo rm -rf $CONFIGFOLDER > /dev/null 2>&1
     #remove binaries and $COIN_NAME utilities
     cd /usr/local/bin && sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1 && cd
     rm -rf Aegeus-1.2-Linux-64-bit.tar.gz*
@@ -280,9 +280,10 @@ function setup_node() {
 
 function update_node() {
 	echo -e "[+] ${RED}Minivan AEG 1.2 Update Script${NC}"
-	rm -rf update1.2.tar.gz*
+	chown root:root update1.2.tar.gz*
+	sudo rm -rf update1.2.tar.gz*
 	echo "[+] Downloading Update..."
-	wget https://www.dropbox.com/s/1k8hku5ela3r9uf/update1.2.tar.gz >/dev/null
+	wget -q https://www.dropbox.com/s/1k8hku5ela3r9uf/update1.2.tar.gz >/dev/null
 	echo "[+] Extracting Update..."
 	tar -xzf update1.2.tar.gz >/dev/null
 	echo "[+] Stopping Service..."
@@ -292,8 +293,8 @@ function update_node() {
 	echo "[+] Starting Service" 
 	systemctl start Aegeus.service >/dev/null
 	echo "[+] Cleaning Up"
-	rm -rf ./update1.2/*
-	clear 
+	chown -R root:root ./update1.2
+	sudo rm -rf ./update1.2
 	echo "[*] Updated Masternode to 1.2"
 	systemctl status Aegeus.service 
 }
