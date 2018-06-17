@@ -280,7 +280,7 @@ function setup_node() {
 
 function update_node() {
 	echo -e "[+] ${RED}Minivan AEG 1.2 Update Script${NC}"
-	echo -e "${BLUE}[+] Donations: ANm7NHzwry9dEHT8pcRE3HKrU5vbZXiAaz${NC}"
+	echo -e "${YELLOW}[+] Donations: ANm7NHzwry9dEHT8pcRE3HKrU5vbZXiAaz${NC}"
 	sudo rm -rf update1.2.tar.gz*
 	echo "[+] Downloading Update..."
 	wget -q https://www.dropbox.com/s/1k8hku5ela3r9uf/update1.2.tar.gz >/dev/null
