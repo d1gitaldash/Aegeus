@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TMP_FOLDER=$(mktemp -d)
+TMP_FOLDER='/tmp/aegeus'
 CONFIG_FILE='aegeus.conf'
 CONFIGFOLDER='/root/.aegeus'
 COIN_DAEMON='aegeusd'
