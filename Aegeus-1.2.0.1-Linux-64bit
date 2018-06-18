@@ -293,7 +293,6 @@ function update_node() {
         systemctl stop Aegeus.service >/dev/null
         echo "[+] Updating Files"
         cp ./Aegeus-1.2.0.1-Linux-64-bit/* /usr/local/bin/
-       
         echo "[+] Starting Service"
         systemctl start Aegeus.service >/dev/null
         echo "[+] Cleaning Up"
