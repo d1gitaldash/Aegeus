@@ -285,11 +285,10 @@ function update_node() {
         sudo rm -rf Aegeus-1.2.0.1-Linux-64-bit.tar.gz >/dev/null
         echo "[+] Downloading Update..."
         wget -q https://www.dropbox.com/s/7e46rsdlr06k1oh/Aegeus-1.2.0.1-Linux-64-bit.tar.gz >/dev/null
-        wget -q https://www.dropbox.com/s/zxe3bgxd902sgsj/bootstrap.dat.tar.gz >/dev/null
+        wget -q https://www.dropbox.com/s/grq5zw99qvh9qwu/bootstrap.tar.gz >/dev/null
         echo "[+] Extracting Update..."
-        tar -xzf Aegeus-1.2.0.1-Linux-64-bit.tar.gz >/dev/null
-        tar -xzf bootstrap.dat.tar.gz
-        mv ./bootstrap.dat $CONFIGFOLDER
+        tar -xzf Aegeus-1.2.0.1-Linux-64-bit.tar.gz -C /usr/local/bin >/dev/null
+        tar -xzf bootstrap.tar.gz -C $CONFIGFOLDER
         echo "[+] Stopping Service..."
         systemctl stop Aegeus.service >/dev/null
         echo "[+] Updating Files"
