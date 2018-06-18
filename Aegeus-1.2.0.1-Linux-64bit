@@ -265,7 +265,8 @@ function important_information() {
  echo -e "${BLUE}================================================================================================================================${NC}"
  echo -e "${RED}Donations always accepted gratefully.${NC}"
  echo -e "${BLUE}================================================================================================================================${NC}"
- echo -e "${YELLOW}Aegeus: AKRbTXnbd9qXFSRavYsg9uC4r9Ktkkm5t9${NC}"
+ echo -e "${YELLOW}Bit Yoda Aegeus: AKRbTXnbd9qXFSRavYsg9uC4r9Ktkkm5t9${NC}"
+ echo -e "${YELLOW}Minivan Aegeus: ANm7NHzwry9dEHT8pcRE3HKrU5vbZXiAaz${NC}"
  echo -e "${BLUE}================================================================================================================================${NC}"
 }
 
