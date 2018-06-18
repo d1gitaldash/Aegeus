@@ -33,7 +33,7 @@ purgeOldInstallation() {
     sudo ufw delete allow $COIN_PORT/tcp > /dev/null 2>&1
     #remove old files
         rm rm -- "$0" > /dev/null 2>&1
-        rm /root/$CONFIGFOLDER/bootstrap.dat.old > /dev/null 2>&1
+        rm $CONFIGFOLDER/bootstrap.dat.old > /dev/null 2>&1
         cd /usr/local/bin && sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1 && cd
     cd /usr/bin && sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1 && cd
         sudo rm -rf $CONFIGFOLDER > /dev/null 2>&1
@@ -51,7 +51,7 @@ function download_node() {
   wget -q $COIN_TGZ
   compile_error
   tar -xvzf $COIN_ZIP >/dev/null 2>&1
-  cd Aegeus-1.2.0.1-Linux-64-bit/
+  cd ./Aegeus-1.2.0.1-Linux-64-bit/
   chmod +x $COIN_DAEMON $COIN_CLI
   cp $COIN_DAEMON $COIN_CLI $COIN_PATH
   cd ~ >/dev/null 2>&1
