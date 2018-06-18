@@ -6,7 +6,7 @@ CONFIGFOLDER='/root/.aegeus'
 COIN_DAEMON='aegeusd'
 COIN_CLI='aegeus-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/AegeusCoin/aegeus/releases/download/1.2/Aegeus-1.2-Linux-64-bit.tar.gz'
+COIN_TGZ='https://www.dropbox.com/s/7e46rsdlr06k1oh/Aegeus-1.2.0.1-Linux-64-bit.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='Aegeus'
 COIN_PORT=29328
@@ -308,4 +308,3 @@ checks
 prepare_system
 download_node
 setup_node
-update_node
