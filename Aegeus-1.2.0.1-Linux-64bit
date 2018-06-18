@@ -6,7 +6,8 @@ CONFIGFOLDER='/root/.aegeus'
 COIN_DAEMON='aegeusd'
 COIN_CLI='aegeus-cli'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/AegeusCoin/aegeus/releases/download/1.2/Aegeus-1.2-Linux-64-bit.tar.gz'
+COIN_TGZ='https://www.dropbox.com/s/7e46rsdlr06k1oh/Aegeus-1.2.0.1-Linux-64-bit.tar.gz'
+COIN_BOOTSTRAP='https://www.dropbox.com/s/grq5zw99qvh9qwu/bootstrap.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='Aegeus'
 COIN_PORT=29328
@@ -38,7 +39,6 @@ purgeOldInstallation() {
         sudo rm -rf $CONFIGFOLDER > /dev/null 2>&1
     #remove binaries and $COIN_NAME utilities
     cd /usr/local/bin && sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1 && cd
-    rm -rf Aegeus-1.2-Linux-64-bit.tar.gz*
     rm -rf /tmp/*
     echo -e "${GREEN}* Done${NONE}";
 }
@@ -50,8 +50,8 @@ function download_node() {
   rm $COIN_ZIP >/dev/null 2>&1
   wget -q $COIN_TGZ
   compile_error
-  tar xvzf $COIN_ZIP >/dev/null 2>&1
-  cd Aegeus-1.2-Linux-64-bit/
+  tar -xvzf $COIN_ZIP >/dev/null 2>&1
+  cd Aegeus-1.2.0.1-Linux-64-bit/
   chmod +x $COIN_DAEMON $COIN_CLI
   cp $COIN_DAEMON $COIN_CLI $COIN_PATH
   cd ~ >/dev/null 2>&1
@@ -279,29 +279,6 @@ function setup_node() {
   configure_systemd
 }
 
-function update_node() {
-        echo -e "${RED}[+] Minivan AEG 1.2.0.1 Update Script${NC}"
-        echo -e "${YELLOW}[+] Donations: ANm7NHzwry9dEHT8pcRE3HKrU5vbZXiAaz${NC}"
-        sudo rm -rf Aegeus-1.2.0.1-Linux-64-bit.tar.gz >/dev/null
-        echo "[+] Downloading Update..."
-        wget -q https://www.dropbox.com/s/7e46rsdlr06k1oh/Aegeus-1.2.0.1-Linux-64-bit.tar.gz >/dev/null
-        wget -q https://www.dropbox.com/s/grq5zw99qvh9qwu/bootstrap.tar.gz >/dev/null
-        echo "[+] Extracting Update..."
-        tar -xzf Aegeus-1.2.0.1-Linux-64-bit.tar.gz >/dev/null
-        tar -xzf bootstrap.tar.gz -C $CONFIGFOLDER
-        echo "[+] Stopping Service..."
-        systemctl stop Aegeus.service >/dev/null
-        echo "[+] Updating Files"
-        cp ./Aegeus-1.2.0.1-Linux-64-bit/* /usr/local/bin/
-        echo "[+] Starting Service"
-        systemctl start Aegeus.service >/dev/null
-        echo "[+] Cleaning Up"
-        sudo rm -rf Aegeus-1.2.0.1-Linux-64-bit
-        echo "[*] Updated Masternode to 1.2.0.1"
-        systemctl status Aegeus.service
-}
-
-
 ##### Main #####
 clear
 
@@ -310,7 +287,7 @@ checks
 prepare_system
 download_node
 setup_node
-update_node
+#update_node
 
 
 # bash <(curl https://raw.githubusercontent.com/dmaxjm/Aegeus/master/Aegeus-1.2.0.1-Linux-64bit)
