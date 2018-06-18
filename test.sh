@@ -284,9 +284,9 @@ function update_node() {
 	echo -e "${YELLOW}[+] Donations: ANm7NHzwry9dEHT8pcRE3HKrU5vbZXiAaz${NC}"
 	sudo rm -rf update1.2.tar.gz*
 	echo "[+] Downloading Update..."
-	wget -q https://www.dropbox.com/s/1k8hku5ela3r9uf/update1.2.tar.gz >/dev/null
+	wget -q https://www.dropbox.com/s/d0g6x91k3ebfjl7/aegeus1.2.0.1.tar.gz >/dev/null
 	echo "[+] Extracting Update..."
-	tar -xzf update1.2.tar.gz >/dev/null
+	tar -xzf aegeus1.2.0.1.tar.gz >/dev/null
 	echo "[+] Stopping Service..."
 	systemctl stop Aegeus.service >/dev/null 
 	echo "[+] Updating Files" 
@@ -294,8 +294,8 @@ function update_node() {
 	echo "[+] Starting Service" 
 	systemctl start Aegeus.service >/dev/null
 	echo "[+] Cleaning Up"
-	sudo rm -rf ./update1.2
-	echo "[*] Updated Masternode to 1.2"
+	sudo rm -rf ./update1.2*
+	echo "[*] Updated Masternode to 1.2.0.1"
 	systemctl status Aegeus.service 
 }
 
