@@ -240,6 +240,7 @@ clear
 
 function important_information() {
  echo
+ echo -e "${RED} Minivan 1.2.0.1 Update${NC}"
  echo -e "${BLUE}================================================================================================================================${NC}"
  echo -e "${PURPLE}Windows Wallet Guide. https://github.com/Aegeus/master/README.md${NC}"
  echo -e "${BLUE}================================================================================================================================${NC}"
