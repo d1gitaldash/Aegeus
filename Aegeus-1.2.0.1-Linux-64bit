@@ -280,7 +280,7 @@ function setup_node() {
 }
 
 function update_node() {
-        echo -e "[+] ${RED}Minivan AEG 1.2 Update Script${NC}"
+        echo -e "${RED}[+] Minivan AEG 1.2.0.1 Update Script${NC}"
         echo -e "${YELLOW}[+] Donations: ANm7NHzwry9dEHT8pcRE3HKrU5vbZXiAaz${NC}"
         sudo rm -rf Aegeus-1.2.0.1-Linux-64-bit.tar.gz >/dev/null
         echo "[+] Downloading Update..."
