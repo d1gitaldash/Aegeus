@@ -288,7 +288,7 @@ function setup_node() {
   create_config
   create_key
   update_config
-  bootstrap
+  #bootstrap
   enable_firewall
   #install_sentinel
   important_information
