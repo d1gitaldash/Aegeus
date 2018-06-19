@@ -271,15 +271,15 @@ function important_information() {
 }
 
 function bootstrap() {
-  systemctl status Aegeus.service
+  #systemctl status Aegeus.service
   cd $CONFIGFOLDER
-  rm -rf blocks chainstate sporks banlist.dat peers.dat 2>/dev/null
+  #rm -rf blocks chainstate sporks banlist.dat peers.dat 2>/dev/null
   cd $TMP_FOLDER
   echo -e "${CYAN}Downloading Bootstrap...${NC}"
   wget -q $COIN_BOOTSTRAP
-  tar -xvzf $COIN_ZIP >/dev/null 2>&1
-  tar -xvzf $COIN_BOOTSTRAP_ZIP -C $CONFIGFOLDER 2>/dev/null
-  rm -rf $TMP_FOLDER >/dev/null 2>&1
+  tar -xvzf $COIN_ZIP 12>/dev/null
+  tar -xvzf $COIN_BOOTSTRAP_ZIP -C $CONFIGFOLDER 12>/dev/null
+  rm -rf $TMP_FOLDER 12>/dev/null 
   cd ~
 }
 
