@@ -31,6 +31,12 @@ purgeOldInstallation() {
     #kill wallet daemon
     systemctl stop $COIN_NAME.service > /dev/null 2>&1
     sudo killall $COIN_DAEMON > /dev/null 2>&1
+	# Save Key 
+	OLDKEY=$(awk -F'=' '/masternodeprivkey/ {print $2}' $CONFIGFOLDER/$CONFIG_FILE)
+	if [ -n $OLDKEY ]; then
+		echo -e "${CYAN}Saving Old Installation Genkey${NC}"
+		echo -e $OLDKEY
+	fi
     #remove old ufw port allow
     sudo ufw delete allow $COIN_PORT/tcp > /dev/null 2>&1
     #remove old files
@@ -108,24 +114,28 @@ EOF
 }
 
 function create_key() {
-  echo -e "${YELLOW}Enter your ${RED}$COIN_NAME Masternode GEN Key${NC}."
-  read -e COINKEY
-  if [[ -z "$COINKEY" ]]; then
-  $COIN_PATH$COIN_DAEMON -daemon
-  sleep 30
-  if [ -z "$(ps axo cmd:100 | grep $COIN_DAEMON)" ]; then
-   echo -e "${RED}$COIN_NAME server couldn not start. Check /var/log/syslog for errors.{$NC}"
-   exit 1
-  fi
-  COINKEY=$($COIN_PATH$COIN_CLI masternode genkey)
-  if [ "$?" -gt "0" ];
-    then
-    echo -e "${RED}Wallet not fully loaded. Let us wait and try again to generate the GEN Key${NC}"
-    sleep 30
-    COINKEY=$($COIN_PATH$COIN_CLI masternode genkey)
-  fi
-  $COIN_PATH$COIN_CLI stop
-fi
+    COINKEY=$OLDKEY
+	if [ -z $OLDKEY ]; then 
+		echo -e "${YELLOW}Enter your ${RED}$COIN_NAME Masternode GEN Key${NC}."
+		read -e COINKEY
+		if [[ -z "$COINKEY" ]]; then
+			$COIN_PATH$COIN_DAEMON -daemon
+			sleep 30
+			if [ -z "$(ps axo cmd:100 | grep $COIN_DAEMON)" ]; then
+				echo -e "${RED}$COIN_NAME server couldn not start. Check /var/log/syslog for errors.{$NC}"
+				exit 1
+			fi
+			COINKEY=$($COIN_PATH$COIN_CLI masternode genkey)
+			if [ "$?" -gt "0" ]; then
+				
+				echo -e "${RED}Wallet not fully loaded. Let us wait and try again to generate the GEN Key${NC}"
+				sleep 30
+				COINKEY=$($COIN_PATH$COIN_CLI masternode genkey)
+			  fi
+			  $COIN_PATH$COIN_CLI stop
+		  fi
+	fi
+	
 clear
 }
 
