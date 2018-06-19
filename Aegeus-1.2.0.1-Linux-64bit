@@ -288,10 +288,10 @@ function setup_node() {
   create_config
   create_key
   update_config
+  bootstrap
   enable_firewall
   #install_sentinel
   important_information
-  bootstrap
   configure_systemd
 }
 
