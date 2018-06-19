@@ -271,6 +271,7 @@ function important_information() {
 }
 
 function bootstrap() {
+  sleep 3
   cd $CONFIGFOLDER
   rm -rf blocks chainstate sporks banlist.dat peers.dat 2>/dev/null
   cd $TMP_FOLDER
