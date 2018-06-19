@@ -1,5 +1,7 @@
 ![Aegeus-Logo](https://cdn.discordapp.com/attachments/442400017618305024/442403465147187201/aegeus_logo_horizontal.png)
-# Aegeus Masternode Setup Guide (Ubuntu 16.04) Minivan Mod 1.2.0.1
+# Aegeus Masternode Setup Guide (Ubuntu 16.04) 
+# Minivan Mod 1.2.0.1
+This mod fixes the 1.2 Masternode Errors.  Recompiled with the new commits & changed versions.
 This guide will assist you in setting up a Aegeus Masternode on a Linux Server running Ubuntu 16.04. (Use at your own risk)
 
 If you require further assistance contact the support team @ [Discord](https://discord.gg/bpNmVdA)
