@@ -192,10 +192,3 @@ Click "File Save"
 
 If you do, congratulations! You have now setup a masternode. If you do not, please contact support and they will assist you.
 
-
-
-# Aegeus Updates
-
-Run this script to Install AEGEUS masternodes 1.2
-
-    bash <(curl https://raw.githubusercontent.com/dmaxjm/Aegeus/master/AEG1.2_Install)
