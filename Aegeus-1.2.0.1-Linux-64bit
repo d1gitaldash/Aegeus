@@ -1,5 +1,6 @@
 #!/bin/bash
 
+UPDATE_NAME='Aegeus-1.2.0.1-Linux-64-bit'
 TMP_FOLDER='/tmp/aegeus-install/'
 CONFIG_FILE='aegeus.conf'
 CONFIGFOLDER='/root/.aegeus'
@@ -34,33 +35,22 @@ purgeOldInstallation() {
     sudo ufw delete allow $COIN_PORT/tcp > /dev/null 2>&1
     #remove old files
     sudo rm -rf $CONFIGFOLDER > /dev/null 2>&1
-    sudo rm -rf $COINPATH$COIN_CLI $COINPATH$COIN_DAEMON> /dev/null 2>&1
-    sudo rm /usr/bin/$COIN_CLI /usr/bin/$COIN_DAEMON > /dev/null 2>&1
+    sudo rm -rf /usr/local/bin/$COIN_CLI /usr/local/bin/$COIN_DAEMON> /dev/null 2>&1
+    sudo rm -rf /usr/bin/$COIN_CLI /usr/bin/$COIN_DAEMON > /dev/null 2>&1
     sudo rm -rf /tmp/*
-    
-        #rm rm -- "$0" > /dev/null 2>&1
-        #rm $CONFIGFOLDER/bootstrap.dat.old > /dev/null 2>&1
-        #cd /usr/local/bin && sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1 && cd
-    #cd /usr/bin && sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1 && cd
-    #    sudo rm -rf $CONFIGFOLDER > /dev/null 2>&1
-    #remove binaries and $COIN_NAME utilities
-    #cd /usr/local/bin && sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1 && cd
-    #rm -rf /tmp/*
     echo -e "${GREEN}* Done${NONE}";
 }
 
 
 function download_node() {
-  mkdir $TMP_FOLDER >/dev/null 2>&1
+  mkdir $TMP_FOLDER
   echo -e "${GREEN}Downloading and Installing VPS $COIN_NAME Daemon${NC}"
-  cd $TMP_FOLDER >/dev/null 2>&1
-  rm $COIN_ZIP >/dev/null 2>&1
-  wget -q $COIN_TGZ
+  rm $TMP_FOLDER$COIN_ZIP > /dev/null 2>&1
+  wget -q $COIN_TGZ -P $TMP_FOLDER
   compile_error
-  cd ./Aegeus-1.2.0.1-Linux-64-bit/
-  chmod +x $COIN_DAEMON $COIN_CLI
-  cp $COIN_DAEMON $COIN_CLI $COIN_PATH
-  cd ~ >/dev/null 2>&1
+  tar -xzf $TMP_FOLDER$COIN_ZIP -C $TMP_FOLDER
+  chmod +x $TMP_FOLDER/$UPDATE_NAME/*
+  cp $TMP_FOLDER/$UPDATE_NAME/$COIN_DAEMON $TMP_FOLDER/$UPDATE_NAME/$COIN_CLI $COIN_PATH
   clear
 }
 
@@ -207,7 +197,7 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
-if [ -n "$(pidof $COIN_DAEMON)" ] || [ -e "$COIN_DAEMOM" ] ; then
+if [ -n "$(pidof $COIN_DAEMON)" ] || [ -e "$COIN_DAEMON" ] ; then
   echo -e "${RED}$COIN_NAME is already installed.${NC}"
   exit 1
 fi
@@ -278,13 +268,13 @@ function important_information() {
 function bootstrap() {
   #systemctl status Aegeus.service
   cd $CONFIGFOLDER
-  #rm -rf blocks chainstate sporks banlist.dat peers.dat 2>/dev/null
+  rm -rf blocks chainstate sporks banlist.dat peers.dat 2>/dev/null
   cd $TMP_FOLDER
   echo -e "${CYAN}Downloading Bootstrap...${NC}"
   wget -q $COIN_BOOTSTRAP
-  tar -xvzf $COIN_ZIP 12>/dev/null
-  tar -xvzf $COIN_BOOTSTRAP_ZIP -C $CONFIGFOLDER 12>/dev/null
-  rm -rf $TMP_FOLDER 12>/dev/null 
+  tar -xvzf $COIN_ZIP >/dev/null 2>&1
+  tar -xvzf $COIN_BOOTSTRAP_ZIP -C $CONFIGFOLDER >/dev/null 2>&1
+  rm -rf $TMP_FOLDER >/dev/null 2>&1
   cd ~
 }
 
@@ -293,7 +283,7 @@ function setup_node() {
   create_config
   create_key
   update_config
-  #bootstrap
+  bootstrap
   enable_firewall
   #install_sentinel
   important_information
@@ -302,7 +292,6 @@ function setup_node() {
 
 ##### Main #####
 clear
-
 purgeOldInstallation
 checks
 prepare_system
