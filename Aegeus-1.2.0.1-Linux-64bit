@@ -271,7 +271,6 @@ function important_information() {
 }
 
 function bootstrap() {
-  systemctl stop Aegeus.service
   cd $CONFIGFOLDER
   rm -rf blocks chainstate sporks banlist.dat peers.dat 2>/dev/null
   cd $TMP_FOLDER
@@ -281,7 +280,6 @@ function bootstrap() {
   tar -xvzf $COIN_BOOTSTRAP_ZIP -C $CONFIGFOLDER 2>/dev/null
   rm -rf $TMP_FOLDER >/dev/null 2>&1
   cd ~
-  systemctl start Aegeus.service
 }
 
 function setup_node() {
@@ -292,8 +290,8 @@ function setup_node() {
   enable_firewall
   #install_sentinel
   important_information
-  configure_systemd
   bootstrap
+  configure_systemd
 }
 
 ##### Main #####
