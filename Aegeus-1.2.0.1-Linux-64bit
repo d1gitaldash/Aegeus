@@ -33,14 +33,19 @@ purgeOldInstallation() {
     #remove old ufw port allow
     sudo ufw delete allow $COIN_PORT/tcp > /dev/null 2>&1
     #remove old files
-        rm rm -- "$0" > /dev/null 2>&1
-        rm $CONFIGFOLDER/bootstrap.dat.old > /dev/null 2>&1
-        cd /usr/local/bin && sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1 && cd
-    cd /usr/bin && sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1 && cd
-        sudo rm -rf $CONFIGFOLDER > /dev/null 2>&1
+    sudo rm -rf $CONFIGFOLDER > /dev/null 2>&1
+    sudo rm -rf $COINPATH$COIN_CLI $COINPATH$COIN_DAEMON> /dev/null 2>&1
+    sudo rm /usr/bin/$COIN_CLI /usr/bin/$COIN_DAEMON > /dev/null 2>&1
+    sudp rm -rf /tmp/*
+    
+        #rm rm -- "$0" > /dev/null 2>&1
+        #rm $CONFIGFOLDER/bootstrap.dat.old > /dev/null 2>&1
+        #cd /usr/local/bin && sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1 && cd
+    #cd /usr/bin && sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1 && cd
+    #    sudo rm -rf $CONFIGFOLDER > /dev/null 2>&1
     #remove binaries and $COIN_NAME utilities
-    cd /usr/local/bin && sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1 && cd
-    rm -rf /tmp/*
+    #cd /usr/local/bin && sudo rm $COIN_CLI $COIN_DAEMON > /dev/null 2>&1 && cd
+    #rm -rf /tmp/*
     echo -e "${GREEN}* Done${NONE}";
 }
 
@@ -299,6 +304,7 @@ function setup_node() {
 clear
 
 purgeOldInstallation
+bootstrap
 checks
 prepare_system
 download_node
