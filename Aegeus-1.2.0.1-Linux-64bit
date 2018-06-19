@@ -32,9 +32,9 @@ purgeOldInstallation() {
     systemctl stop $COIN_NAME.service > /dev/null 2>&1
     sudo killall $COIN_DAEMON > /dev/null 2>&1
 	# Save Key 
-	OLDKEY=$(awk -F'=' '/masternodeprivkey/ {print $2}' $CONFIGFOLDER/$CONFIG_FILE)
-	if [ -n $OLDKEY ]; then
-		echo -e "${CYAN}Saving Old Installation Genkey${NC}"
+	OLDKEY=$(awk -F'=' '/masternodeprivkey/ {print $2}' $CONFIGFOLDER/$CONFIG_FILE > /dev/null 2>&1)
+	if [ "$?" -eq "0" ]; then
+    		echo -e "${CYAN}Saving Old Installation Genkey${NC}"
 		echo -e $OLDKEY
 	fi
     #remove old ufw port allow
