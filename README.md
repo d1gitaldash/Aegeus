@@ -102,7 +102,8 @@ If you require further assistance contact the support team @ [Discord](https://d
 * Paste the code below into the Bitvise terminal then press enter 
 ![Example-RootPassEnter](https://i.imgur.com/K6xlnav.png)
 
-`bash <(curl https://raw.githubusercontent.com/dmaxjm/Aegeus/master/AEG1.2_Install)` * Minivan *
+`bash <(curl https://raw.githubusercontent.com/dmaxjm/Aegeus/master/AEG1.2_Install)` 
+
 ***
 
 ***Step 9***
