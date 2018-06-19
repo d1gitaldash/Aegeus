@@ -36,7 +36,7 @@ purgeOldInstallation() {
     sudo rm -rf $CONFIGFOLDER > /dev/null 2>&1
     sudo rm -rf $COINPATH$COIN_CLI $COINPATH$COIN_DAEMON> /dev/null 2>&1
     sudo rm /usr/bin/$COIN_CLI /usr/bin/$COIN_DAEMON > /dev/null 2>&1
-    sudp rm -rf /tmp/*
+    sudo rm -rf /tmp/*
     
         #rm rm -- "$0" > /dev/null 2>&1
         #rm $CONFIGFOLDER/bootstrap.dat.old > /dev/null 2>&1
