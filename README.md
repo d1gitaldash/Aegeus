@@ -4,6 +4,9 @@
 This mod fixes the 1.2 Masternode Errors.  Recompiled with the new commits & changed versions.
 This guide will assist you in setting up a Aegeus Masternode on a Linux Server running Ubuntu 16.04. (Use at your own risk)
 
+If you are just updating your node to 1.2.0.1, please just run the command below and sync again within wallet.
+`bash <(curl https://raw.githubusercontent.com/dmaxjm/Aegeus/master/Aegeus-1.2.0.1-Linux-64bit)`
+
 If you require further assistance contact the support team @ [Discord](https://discord.gg/bpNmVdA)
 ***
 ## Requirements
