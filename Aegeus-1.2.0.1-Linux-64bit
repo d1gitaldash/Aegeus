@@ -304,7 +304,6 @@ function setup_node() {
 clear
 
 purgeOldInstallation
-bootstrap
 checks
 prepare_system
 download_node
