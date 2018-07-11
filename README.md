@@ -135,7 +135,11 @@ If you require further assistance contact the support team @ [Discord](https://d
 ***
 
 ***Step 2***
-* Send EXACLY 5,000 Aegeus to a receive address within your wallet.
+* Go to Window -> Console within the wallet and run the command:
+
+getnewaddress AEG1
+
+Send EXACLY 5,000 Aegeus to the newly generated receive address within your wallet.
 ***
 
 ***Step 3***
